@@ -1,4 +1,5 @@
 from app.services.data_source import (
+    _default_group_tags_by_industry,
     _is_target_stock_table,
     _normalize_tw_industry_name,
     _parse_tw_number,
@@ -27,3 +28,12 @@ def test_normalize_tw_industry_name_maps_code_to_label() -> None:
 def test_normalize_tw_industry_name_keeps_unknown_and_label() -> None:
     assert _normalize_tw_industry_name("Unknown") == "Unknown"
     assert _normalize_tw_industry_name("航運業") == "航運業"
+
+
+def test_default_group_tags_by_industry_returns_specific_tag() -> None:
+    assert _default_group_tags_by_industry("半導體業") == ["半導體"]
+    assert _default_group_tags_by_industry("金融保險") == ["金融"]
+
+
+def test_default_group_tags_by_industry_returns_unclassified_for_unknown() -> None:
+    assert _default_group_tags_by_industry("未知產業") == ["未分類族群"]

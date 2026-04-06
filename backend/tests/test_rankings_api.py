@@ -105,7 +105,9 @@ def test_momentum_endpoint_returns_group_frequency() -> None:
 
     assert isinstance(payload["rows"], list)
     assert isinstance(payload["today_group_frequency"], list)
-    assert payload["today_group_frequency"][0]["tag"] in {"AI晶片", "ETF"}
+    tags = {item["tag"] for item in payload["today_group_frequency"]}
+    assert "AI晶片" in tags
+    assert "ETF" in tags
     assert payload["ranking_metric"] == "turnover_value"
     assert "group_strengthening" in payload
 

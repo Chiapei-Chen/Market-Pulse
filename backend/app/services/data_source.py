@@ -177,7 +177,11 @@ class TwseDelayedDataSource:
             if mapping_item is not None:
                 industry_l1 = mapping_item["industry"]
 
-            group_tags = mapping_item["tags"] if mapping_item is not None else ["未分類族群"]
+            group_tags = (
+                mapping_item["tags"]
+                if mapping_item is not None
+                else _default_group_tags_by_industry(industry_l1)
+            )
             primary_group_tag = group_tags[0]
 
             parsed_rows.append(
@@ -410,6 +414,25 @@ def _sample_tags(symbol: str, theme_mapping: dict[str, dict[str, str | list[str]
             return normalized
 
     return [_sample_primary_tag(symbol, theme_mapping)]
+
+
+def _default_group_tags_by_industry(industry_level_1: str) -> list[str]:
+    fallback_map = {
+        "半導體業": ["半導體"],
+        "電子零組件業": ["電子零組件"],
+        "通信網路業": ["網通"],
+        "電腦及週邊設備業": ["電腦設備"],
+        "光電業": ["面板光電"],
+        "金融保險": ["金融"],
+        "航運業": ["航運"],
+        "鋼鐵工業": ["鋼鐵"],
+        "化學工業": ["化工"],
+        "生技醫療業": ["生技醫療"],
+        "電機機械": ["電機設備"],
+        "其他電子業": ["其他電子"],
+        "ETF": ["ETF"],
+    }
+    return fallback_map.get(industry_level_1, ["未分類族群"])
 
 
 def get_data_source() -> StockDataSource:
