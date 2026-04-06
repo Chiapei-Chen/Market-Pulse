@@ -10,6 +10,7 @@ class ThemeMappingItem(TypedDict):
     code: str
     industry: str
     tag: str
+    tags: list[str]
 
 
 ThemeMappingDict = dict[str, ThemeMappingItem]
@@ -31,11 +32,25 @@ def load_theme_mapping() -> ThemeMappingDict:
 
         code = str(item.get("code", symbol)).strip()
         industry = str(item.get("industry", "Unknown")).strip() or "Unknown"
-        tag = str(item.get("tag", "未分類族群")).strip() or "未分類族群"
+
+        raw_tags = item.get("tags")
+        tags: list[str] = []
+        if isinstance(raw_tags, list):
+            tags = [str(tag).strip() for tag in raw_tags if str(tag).strip()]
+
+        single_tag = str(item.get("tag", "")).strip()
+        if single_tag:
+            tags = [single_tag, *[tag for tag in tags if tag != single_tag]]
+
+        if not tags:
+            tags = ["未分類族群"]
+
+        tag = tags[0]
         normalized[str(symbol).strip()] = {
             "code": code,
             "industry": industry,
             "tag": tag,
+            "tags": tags,
         }
 
     return normalized

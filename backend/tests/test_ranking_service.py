@@ -65,16 +65,32 @@ def test_rerank_assigns_compact_rank_order() -> None:
     assert [item.rank for item in reranked] == [1, 2]
 
 
+def test_rerank_supports_volume_metric() -> None:
+    rows = [_stock("2330", 1), _stock("2317", 2), _stock("2603", 3)]
+    rows[0].volume = 100
+    rows[1].volume = 400
+    rows[2].volume = 300
+
+    reranked = rerank(rows, top_n=3, ranking_metric="volume")
+
+    assert [item.symbol for item in reranked] == ["2317", "2603", "2330"]
+    assert [item.rank for item in reranked] == [1, 2, 3]
+
+
 def test_aggregate_group_frequency_counts_tags() -> None:
     rows = [_stock("2330", 1), _stock("2317", 2), _stock("2603", 3)]
     rows[0].custom_group_tag = "AI晶片"
+    rows[0].custom_group_tags = ["AI晶片", "半導體"]
     rows[1].custom_group_tag = "AI晶片"
+    rows[1].custom_group_tags = ["AI晶片"]
     rows[2].custom_group_tag = "重電"
+    rows[2].custom_group_tags = ["重電", "電網"]
 
     frequencies = aggregate_group_frequency(rows, top_n=100)
 
     assert frequencies[0].tag == "AI晶片"
     assert frequencies[0].count == 2
+    assert any(item.tag == "半導體" and item.count == 1 for item in frequencies)
 
 
 def test_detect_collective_strengthening_marks_jump() -> None:
@@ -82,14 +98,22 @@ def test_detect_collective_strengthening_marks_jump() -> None:
     today = [_stock("2330", 1), _stock("2317", 2), _stock("2603", 3), _stock("2303", 4), _stock("2382", 5)]
 
     yesterday[0].custom_group_tag = "重電"
+    yesterday[0].custom_group_tags = ["重電"]
     yesterday[1].custom_group_tag = "重電"
+    yesterday[1].custom_group_tags = ["重電", "電網"]
     yesterday[2].custom_group_tag = "AI晶片"
+    yesterday[2].custom_group_tags = ["AI晶片"]
 
     today[0].custom_group_tag = "重電"
+    today[0].custom_group_tags = ["重電", "電網"]
     today[1].custom_group_tag = "重電"
+    today[1].custom_group_tags = ["重電"]
     today[2].custom_group_tag = "重電"
+    today[2].custom_group_tags = ["重電"]
     today[3].custom_group_tag = "重電"
+    today[3].custom_group_tags = ["重電"]
     today[4].custom_group_tag = "重電"
+    today[4].custom_group_tags = ["重電"]
 
     signals = detect_group_collective_strengthening(
         yesterday=yesterday,

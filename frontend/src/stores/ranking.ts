@@ -2,7 +2,12 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 import { fetchMomentumSnapshot } from '../services/rankingsApi'
-import type { GroupFrequency, GroupStrengtheningSignal, RankedStockWithChange } from '../types/ranking'
+import type {
+  GroupFrequency,
+  GroupStrengtheningSignal,
+  RankedStockWithChange,
+  RankingMetric,
+} from '../types/ranking'
 
 export const useRankingStore = defineStore('ranking', () => {
   const rows = ref<RankedStockWithChange[]>([])
@@ -10,6 +15,7 @@ export const useRankingStore = defineStore('ranking', () => {
   const error = ref<string | null>(null)
   const includeEtf = ref(true)
   const topN = ref(100)
+  const rankingMetric = ref<RankingMetric>('turnover_value')
   const todayGroupFrequency = ref<GroupFrequency[]>([])
   const groupStrengthening = ref<GroupStrengtheningSignal[]>([])
 
@@ -17,7 +23,7 @@ export const useRankingStore = defineStore('ranking', () => {
     loading.value = true
     error.value = null
     try {
-      const snapshot = await fetchMomentumSnapshot(topN.value, includeEtf.value)
+      const snapshot = await fetchMomentumSnapshot(topN.value, includeEtf.value, rankingMetric.value)
       rows.value = snapshot.rows
       todayGroupFrequency.value = snapshot.today_group_frequency
       groupStrengthening.value = snapshot.group_strengthening.filter((item) => item.is_collective_strengthening)
@@ -36,16 +42,22 @@ export const useRankingStore = defineStore('ranking', () => {
     topN.value = value
   }
 
+  function setRankingMetric(value: RankingMetric) {
+    rankingMetric.value = value
+  }
+
   return {
     rows,
     loading,
     error,
     includeEtf,
     topN,
+    rankingMetric,
     todayGroupFrequency,
     groupStrengthening,
     loadRankings,
     setIncludeEtf,
     setTopN,
+    setRankingMetric,
   }
 })

@@ -177,13 +177,17 @@ class TwseDelayedDataSource:
             if mapping_item is not None:
                 industry_l1 = mapping_item["industry"]
 
+            group_tags = mapping_item["tags"] if mapping_item is not None else ["未分類族群"]
+            primary_group_tag = group_tags[0]
+
             parsed_rows.append(
                 {
                     "symbol": symbol,
                     "name": _clean_text(row.get("證券名稱", symbol)),
                     "industry_level_1": industry_l1,
                     "industry_level_2": industry_l2,
-                    "custom_group_tag": mapping_item["tag"] if mapping_item is not None else "未分類族群",
+                    "custom_group_tag": primary_group_tag,
+                    "custom_group_tags": group_tags,
                     "volume": int(_parse_tw_number(row.get("成交股數", "0"))),
                     "turnover_value": float(turnover_value),
                 }
@@ -246,7 +250,8 @@ class SampleStockDataSource:
                 "name": "TSMC",
                 "industry_level_1": "Semiconductor",
                 "industry_level_2": "Foundry",
-                "custom_group_tag": _sample_tag("2330", theme_mapping),
+                "custom_group_tag": _sample_primary_tag("2330", theme_mapping),
+                "custom_group_tags": _sample_tags("2330", theme_mapping),
                 "volume": 95000,
                 "turnover_value": 82000000000,
             },
@@ -255,7 +260,8 @@ class SampleStockDataSource:
                 "name": "ETF50",
                 "industry_level_1": "Fund",
                 "industry_level_2": "ETF",
-                "custom_group_tag": _sample_tag("0050", theme_mapping),
+                "custom_group_tag": _sample_primary_tag("0050", theme_mapping),
+                "custom_group_tags": _sample_tags("0050", theme_mapping),
                 "volume": 87000,
                 "turnover_value": 7500000000,
             },
@@ -264,7 +270,8 @@ class SampleStockDataSource:
                 "name": "Hon Hai",
                 "industry_level_1": "Electronics",
                 "industry_level_2": "EMS",
-                "custom_group_tag": _sample_tag("2317", theme_mapping),
+                "custom_group_tag": _sample_primary_tag("2317", theme_mapping),
+                "custom_group_tags": _sample_tags("2317", theme_mapping),
                 "volume": 76000,
                 "turnover_value": 16500000000,
             },
@@ -273,7 +280,8 @@ class SampleStockDataSource:
                 "name": "Evergreen",
                 "industry_level_1": "Shipping",
                 "industry_level_2": "Container",
-                "custom_group_tag": _sample_tag("2603", theme_mapping),
+                "custom_group_tag": _sample_primary_tag("2603", theme_mapping),
+                "custom_group_tags": _sample_tags("2603", theme_mapping),
                 "volume": 55000,
                 "turnover_value": 5100000000,
             },
@@ -284,7 +292,8 @@ class SampleStockDataSource:
                 "name": "ETF50",
                 "industry_level_1": "Fund",
                 "industry_level_2": "ETF",
-                "custom_group_tag": _sample_tag("0050", theme_mapping),
+                "custom_group_tag": _sample_primary_tag("0050", theme_mapping),
+                "custom_group_tags": _sample_tags("0050", theme_mapping),
                 "volume": 91000,
                 "turnover_value": 8100000000,
             },
@@ -293,7 +302,8 @@ class SampleStockDataSource:
                 "name": "TSMC",
                 "industry_level_1": "Semiconductor",
                 "industry_level_2": "Foundry",
-                "custom_group_tag": _sample_tag("2330", theme_mapping),
+                "custom_group_tag": _sample_primary_tag("2330", theme_mapping),
+                "custom_group_tags": _sample_tags("2330", theme_mapping),
                 "volume": 86000,
                 "turnover_value": 70000000000,
             },
@@ -302,7 +312,8 @@ class SampleStockDataSource:
                 "name": "UMC",
                 "industry_level_1": "Semiconductor",
                 "industry_level_2": "Foundry",
-                "custom_group_tag": _sample_tag("2303", theme_mapping),
+                "custom_group_tag": _sample_primary_tag("2303", theme_mapping),
+                "custom_group_tags": _sample_tags("2303", theme_mapping),
                 "volume": 63000,
                 "turnover_value": 3000000000,
             },
@@ -311,7 +322,8 @@ class SampleStockDataSource:
                 "name": "Hon Hai",
                 "industry_level_1": "Electronics",
                 "industry_level_2": "EMS",
-                "custom_group_tag": _sample_tag("2317", theme_mapping),
+                "custom_group_tag": _sample_primary_tag("2317", theme_mapping),
+                "custom_group_tags": _sample_tags("2317", theme_mapping),
                 "volume": 54000,
                 "turnover_value": 12200000000,
             },
@@ -376,11 +388,28 @@ def _load_json_payload(response: httpx.Response) -> object:
     return response.json()
 
 
-def _sample_tag(symbol: str, theme_mapping: dict[str, dict[str, str]]) -> str:
+def _sample_primary_tag(symbol: str, theme_mapping: dict[str, dict[str, str | list[str]]]) -> str:
     item = theme_mapping.get(symbol)
     if item is None:
         return "未分類族群"
-    return item.get("tag", "未分類族群")
+    tag = item.get("tag")
+    if isinstance(tag, str) and tag.strip():
+        return tag
+    return "未分類族群"
+
+
+def _sample_tags(symbol: str, theme_mapping: dict[str, dict[str, str | list[str]]]) -> list[str]:
+    item = theme_mapping.get(symbol)
+    if item is None:
+        return ["未分類族群"]
+
+    tags = item.get("tags")
+    if isinstance(tags, list):
+        normalized = [str(tag).strip() for tag in tags if str(tag).strip()]
+        if normalized:
+            return normalized
+
+    return [_sample_primary_tag(symbol, theme_mapping)]
 
 
 def get_data_source() -> StockDataSource:

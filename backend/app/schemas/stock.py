@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
@@ -7,6 +9,10 @@ class StockBase(BaseModel):
     industry_level_1: str = Field(..., description="Primary industry")
     industry_level_2: str = Field(..., description="Secondary industry")
     custom_group_tag: str = Field(default="未分類族群", description="Custom momentum group tag")
+    custom_group_tags: list[str] = Field(
+        default_factory=lambda: ["未分類族群"],
+        description="Custom momentum group tags (multi-label)",
+    )
     volume: int = Field(..., ge=0, description="Trade volume")
     turnover_value: float = Field(..., ge=0, description="Trade value")
 
@@ -36,6 +42,7 @@ class GroupStrengtheningSignal(BaseModel):
 
 
 class MomentumComparedResponse(BaseModel):
+    ranking_metric: Literal["turnover_value", "volume"]
     rows: list[RankedStockWithChange]
     today_group_frequency: list[GroupFrequency]
     group_strengthening: list[GroupStrengtheningSignal]

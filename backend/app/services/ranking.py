@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import Counter
 from collections.abc import Iterable
+from typing import Literal
 
 from app.schemas.stock import (
     GroupFrequency,
@@ -9,6 +10,8 @@ from app.schemas.stock import (
     RankedStock,
     RankedStockWithChange,
 )
+
+RankingMetric = Literal["turnover_value", "volume"]
 
 
 def is_etf_symbol(symbol: str) -> bool:
@@ -48,16 +51,37 @@ def filter_etf(rows: Iterable[RankedStock], include_etf: bool) -> list[RankedSto
     return [row for row in rows if not is_etf_symbol(row.symbol)]
 
 
-def rerank(rows: Iterable[RankedStock], top_n: int) -> list[RankedStock]:
+def rerank(
+    rows: Iterable[RankedStock],
+    top_n: int,
+    ranking_metric: RankingMetric = "turnover_value",
+) -> list[RankedStock]:
+    if ranking_metric not in {"turnover_value", "volume"}:
+        raise ValueError(f"Unsupported ranking metric: {ranking_metric}")
+
+    def metric_value(row: RankedStock) -> float:
+        if ranking_metric == "volume":
+            return float(row.volume)
+        return float(row.turnover_value)
+
     ranked: list[RankedStock] = []
-    for index, item in enumerate(sorted(rows, key=lambda row: row.rank)[:top_n], start=1):
+    sorted_rows = sorted(
+        rows,
+        key=lambda row: (metric_value(row), row.turnover_value, row.volume),
+        reverse=True,
+    )
+    for index, item in enumerate(sorted_rows[:top_n], start=1):
         ranked.append(RankedStock(**item.model_dump(exclude={"rank"}), rank=index))
     return ranked
 
 
 def aggregate_group_frequency(rows: Iterable[RankedStock], top_n: int) -> list[GroupFrequency]:
     top_rows = [row for row in rows if row.rank <= top_n]
-    counter = Counter(row.custom_group_tag for row in top_rows)
+    counter: Counter[str] = Counter()
+    for row in top_rows:
+        tags = row.custom_group_tags or [row.custom_group_tag]
+        for tag in set(tags):
+            counter[tag] += 1
 
     frequencies = [
         GroupFrequency(tag=tag, count=count)
@@ -73,10 +97,21 @@ def detect_group_collective_strengthening(
     min_today_count: int = 5,
     min_delta_count: int = 3,
 ) -> list[GroupStrengtheningSignal]:
-    yesterday_counts = Counter(
-        row.custom_group_tag for row in yesterday if row.rank <= top_n
-    )
-    today_counts = Counter(row.custom_group_tag for row in today if row.rank <= top_n)
+    yesterday_counts: Counter[str] = Counter()
+    for row in yesterday:
+        if row.rank > top_n:
+            continue
+        tags = row.custom_group_tags or [row.custom_group_tag]
+        for tag in set(tags):
+            yesterday_counts[tag] += 1
+
+    today_counts: Counter[str] = Counter()
+    for row in today:
+        if row.rank > top_n:
+            continue
+        tags = row.custom_group_tags or [row.custom_group_tag]
+        for tag in set(tags):
+            today_counts[tag] += 1
 
     all_tags = set(yesterday_counts.keys()) | set(today_counts.keys())
     signals: list[GroupStrengtheningSignal] = []

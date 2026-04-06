@@ -49,7 +49,14 @@ SSL note:
 
 Theme mapping:
 - Custom group labels are configured in app/config/stock_theme_map.json
-- Format: symbol -> { code, industry, tag }
+- Format: symbol -> { code, industry, tags[] }
+- `tags[0]` is treated as primary display tag
+
+Unclassified maintenance helper:
+- Export top N symbols still marked as 未分類族群
+- Command (run in backend folder):
+   - python scripts/export_unclassified.py --top-n 100 --metric turnover_value
+   - python scripts/export_unclassified.py --top-n 100 --metric volume --include-etf
 
 ## Test
 

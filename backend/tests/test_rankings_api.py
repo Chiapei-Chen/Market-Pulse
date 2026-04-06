@@ -15,6 +15,7 @@ class FakeDataSource(StockDataSource):
                 industry_level_1="Semiconductor",
                 industry_level_2="Foundry",
                 custom_group_tag="AI晶片",
+                custom_group_tags=["AI晶片", "晶圓代工"],
                 volume=10,
                 turnover_value=500,
                 rank=1,
@@ -25,6 +26,7 @@ class FakeDataSource(StockDataSource):
                 industry_level_1="Fund",
                 industry_level_2="ETF",
                 custom_group_tag="ETF",
+                custom_group_tags=["ETF"],
                 volume=9,
                 turnover_value=400,
                 rank=2,
@@ -39,6 +41,7 @@ class FakeDataSource(StockDataSource):
                 industry_level_1="Fund",
                 industry_level_2="ETF",
                 custom_group_tag="ETF",
+                custom_group_tags=["ETF"],
                 volume=11,
                 turnover_value=600,
                 rank=1,
@@ -49,6 +52,7 @@ class FakeDataSource(StockDataSource):
                 industry_level_1="Semiconductor",
                 industry_level_2="Foundry",
                 custom_group_tag="AI晶片",
+                custom_group_tags=["AI晶片", "晶圓代工"],
                 volume=8,
                 turnover_value=300,
                 rank=2,
@@ -102,6 +106,24 @@ def test_momentum_endpoint_returns_group_frequency() -> None:
     assert isinstance(payload["rows"], list)
     assert isinstance(payload["today_group_frequency"], list)
     assert payload["today_group_frequency"][0]["tag"] in {"AI晶片", "ETF"}
+    assert payload["ranking_metric"] == "turnover_value"
     assert "group_strengthening" in payload
+
+    app.dependency_overrides.clear()
+
+
+def test_today_endpoint_supports_volume_metric() -> None:
+    app.dependency_overrides[get_ranking_data_source] = _override_source
+    client = TestClient(app)
+
+    response = client.get(
+        "/api/rankings/today",
+        params={"include_etf": "true", "top_n": 100, "ranking_metric": "volume"},
+    )
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload[0]["symbol"] == "2330"
+    assert payload[0]["rank"] == 1
 
     app.dependency_overrides.clear()

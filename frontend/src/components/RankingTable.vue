@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { RankedStockWithChange } from '../types/ranking'
+import type { RankedStockWithChange, RankingMetric } from '../types/ranking'
 
 defineProps<{
   rows: RankedStockWithChange[]
+  rankingMetric: RankingMetric
 }>()
 
 function formatNumber(value: number): string {
@@ -22,6 +23,10 @@ function changeColorClass(change: number): string {
 
 <template>
   <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white/90 shadow-sm">
+    <div class="border-b border-slate-200 px-4 py-3 text-xs text-slate-500">
+      目前排名依據：
+      <span class="font-semibold text-slate-700">{{ rankingMetric === 'turnover_value' ? '成交值' : '成交量' }}</span>
+    </div>
     <table class="min-w-[900px] w-full text-left text-sm">
       <thead class="bg-slate-100 text-slate-600">
         <tr>
@@ -42,6 +47,13 @@ function changeColorClass(change: number): string {
           <td class="px-4 py-3">
             <span class="inline-flex rounded-full bg-indigo-100 px-2 py-1 text-xs font-bold text-indigo-700">
               {{ row.custom_group_tag }}
+            </span>
+            <span
+              v-if="row.custom_group_tags.length > 1"
+              class="ml-2 text-xs font-semibold text-slate-500"
+              :title="row.custom_group_tags.join(' / ')"
+            >
+              +{{ row.custom_group_tags.length - 1 }}
             </span>
           </td>
           <td class="px-4 py-3 text-right text-slate-700">{{ formatNumber(row.volume) }}</td>
