@@ -27,12 +27,13 @@ function changeColorClass(change: number): string {
       目前排名依據：
       <span class="font-semibold text-slate-700">{{ rankingMetric === 'turnover_value' ? '成交值' : '成交量' }}</span>
     </div>
-    <table class="min-w-[900px] w-full text-left text-sm">
+    <table class="min-w-[1100px] w-full text-left text-sm">
       <thead class="bg-slate-100 text-slate-600">
         <tr>
           <th class="px-4 py-3">名次</th>
           <th class="px-4 py-3">代號</th>
           <th class="px-4 py-3">名稱</th>
+          <th class="px-4 py-3">產業</th>
           <th class="px-4 py-3">自定義標籤</th>
           <th class="px-4 py-3 text-right">成交量</th>
           <th class="px-4 py-3 text-right">成交值</th>
@@ -45,16 +46,26 @@ function changeColorClass(change: number): string {
           <td class="px-4 py-3 font-mono text-slate-800">{{ row.symbol }}</td>
           <td class="px-4 py-3 font-medium text-slate-800">{{ row.name }}</td>
           <td class="px-4 py-3">
-            <span class="inline-flex rounded-full bg-indigo-100 px-2 py-1 text-xs font-bold text-indigo-700">
-              {{ row.custom_group_tag }}
-            </span>
-            <span
-              v-if="row.custom_group_tags.length > 1"
-              class="ml-2 text-xs font-semibold text-slate-500"
-              :title="row.custom_group_tags.join(' / ')"
-            >
-              +{{ row.custom_group_tags.length - 1 }}
-            </span>
+            <div class="flex flex-col gap-1">
+              <span class="text-sm font-semibold text-slate-800">{{ row.industry_level_1 }}</span>
+              <span
+                v-if="row.industry_level_2 && row.industry_level_2 !== 'Unknown'"
+                class="text-xs text-slate-500"
+              >
+                {{ row.industry_level_2 }}
+              </span>
+            </div>
+          </td>
+          <td class="px-4 py-3">
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                v-for="(tag, index) in (row.custom_group_tags.length ? row.custom_group_tags : [row.custom_group_tag])"
+                :key="`${row.symbol}-${tag}-${index}`"
+                class="inline-flex rounded-full bg-indigo-100 px-2 py-1 text-xs font-bold text-indigo-700"
+              >
+                {{ tag }}
+              </span>
+            </div>
           </td>
           <td class="px-4 py-3 text-right text-slate-700">{{ formatNumber(row.volume) }}</td>
           <td class="px-4 py-3 text-right text-slate-700">{{ formatNumber(row.turnover_value) }}</td>

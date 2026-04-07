@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { MomentumSnapshot, RankingMetric } from '../types/ranking'
+import type { MomentumSnapshot, RankingMetric, TagEditorCatalogResponse } from '../types/ranking'
 
 const client = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000/api/rankings',
@@ -19,5 +19,33 @@ export async function fetchMomentumSnapshot(
     },
   })
 
+  return response.data
+}
+
+export async function addCustomTag(symbol: string, tag: string, industry?: string): Promise<void> {
+  await client.post(`/themes/${symbol}/tags`, {
+    tag,
+    industry,
+  })
+}
+
+export async function removeCustomTag(symbol: string, tag: string): Promise<void> {
+  await client.delete(`/themes/${symbol}/tags`, {
+    data: {
+      tag,
+    },
+  })
+}
+
+export async function fetchTagEditorCatalog(
+  includeEtf: boolean,
+  rankingMetric: RankingMetric,
+): Promise<TagEditorCatalogResponse> {
+  const response = await client.get<TagEditorCatalogResponse>('/themes/catalog', {
+    params: {
+      include_etf: includeEtf,
+      ranking_metric: rankingMetric,
+    },
+  })
   return response.data
 }

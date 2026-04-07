@@ -1,8 +1,11 @@
 from fastapi.testclient import TestClient
+import json
 
 from app.api.rankings import get_ranking_data_source
 from app.schemas.stock import RankedStock
 from app.services.data_source import StockDataSource
+from app.services import theme_mapping
+from app.services import tag_catalog
 from main import app
 
 
@@ -129,3 +132,162 @@ def test_today_endpoint_supports_volume_metric() -> None:
     assert payload[0]["rank"] == 1
 
     app.dependency_overrides.clear()
+
+
+def test_add_custom_theme_tag_endpoint(tmp_path) -> None:
+    mapping_path = tmp_path / "stock_theme_map.json"
+    mapping_path.write_text("{}", encoding="utf-8")
+
+    original_get_path = theme_mapping.get_theme_mapping_path
+    theme_mapping.get_theme_mapping_path = lambda: mapping_path
+    theme_mapping.load_theme_mapping.cache_clear()
+
+    client = TestClient(app)
+    response = client.post(
+        "/api/rankings/themes/2330/tags",
+        json={"tag": "AI晶片", "industry": "半導體業"},
+    )
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["symbol"] == "2330"
+    assert payload["tags"][0] == "AI晶片"
+
+    file_payload = json.loads(mapping_path.read_text(encoding="utf-8"))
+    assert file_payload["2330"]["tags"][0] == "AI晶片"
+
+    theme_mapping.get_theme_mapping_path = original_get_path
+    theme_mapping.load_theme_mapping.cache_clear()
+
+
+def test_remove_custom_theme_tag_endpoint(tmp_path) -> None:
+    mapping_path = tmp_path / "stock_theme_map.json"
+    mapping_path.write_text(
+        json.dumps(
+            {
+                "2330": {
+                    "code": "2330",
+                    "industry": "半導體業",
+                    "tag": "AI晶片",
+                    "tags": ["AI晶片", "晶圓代工"],
+                }
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    original_get_path = theme_mapping.get_theme_mapping_path
+    theme_mapping.get_theme_mapping_path = lambda: mapping_path
+    theme_mapping.load_theme_mapping.cache_clear()
+
+    client = TestClient(app)
+    response = client.request(
+        "DELETE",
+        "/api/rankings/themes/2330/tags",
+        json={"tag": "AI晶片"},
+    )
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["tags"] == ["晶圓代工"]
+    assert payload["tag"] == "晶圓代工"
+
+    file_payload = json.loads(mapping_path.read_text(encoding="utf-8"))
+    assert file_payload["2330"]["tags"] == ["晶圓代工"]
+
+    theme_mapping.get_theme_mapping_path = original_get_path
+    theme_mapping.load_theme_mapping.cache_clear()
+
+
+def test_tag_catalog_endpoint_accumulates_and_marks_new_symbols(tmp_path) -> None:
+    mapping_path = tmp_path / "stock_theme_map.json"
+    mapping_path.write_text(
+        json.dumps(
+            {
+                "2330": {
+                    "code": "2330",
+                    "industry": "半導體業",
+                    "tag": "AI晶片",
+                    "tags": ["AI晶片", "晶圓代工"],
+                },
+                "2317": {
+                    "code": "2317",
+                    "industry": "電子零組件業",
+                    "tag": "AI伺服器",
+                    "tags": ["AI伺服器", "電動車"],
+                },
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    catalog_path = tmp_path / "stock_tag_catalog.json"
+
+    class MutableSource(StockDataSource):
+        def __init__(self) -> None:
+            self.today_rows = [
+                RankedStock(
+                    symbol="2330",
+                    name="TSMC",
+                    industry_level_1="半導體業",
+                    industry_level_2="Foundry",
+                    custom_group_tag="AI晶片",
+                    custom_group_tags=["AI晶片", "晶圓代工"],
+                    volume=10,
+                    turnover_value=500,
+                    rank=1,
+                )
+            ]
+
+        def get_today(self) -> list[RankedStock]:
+            return list(self.today_rows)
+
+        def get_yesterday(self) -> list[RankedStock]:
+            return list(self.today_rows)
+
+    source = MutableSource()
+
+    original_get_mapping_path = theme_mapping.get_theme_mapping_path
+    original_get_catalog_path = tag_catalog.get_tag_catalog_path
+    theme_mapping.get_theme_mapping_path = lambda: mapping_path
+    tag_catalog.get_tag_catalog_path = lambda: catalog_path
+    theme_mapping.load_theme_mapping.cache_clear()
+
+    app.dependency_overrides[get_ranking_data_source] = lambda: source
+    client = TestClient(app)
+
+    first = client.get("/api/rankings/themes/catalog")
+    assert first.status_code == 200
+    first_payload = first.json()
+    assert first_payload["total_symbols"] == 1
+    assert first_payload["new_symbols_today"] == ["2330"]
+    assert first_payload["rows"][0]["is_new_today"] is True
+
+    source.today_rows = [
+        source.today_rows[0],
+        RankedStock(
+            symbol="2317",
+            name="Hon Hai",
+            industry_level_1="電子零組件業",
+            industry_level_2="EMS",
+            custom_group_tag="AI伺服器",
+            custom_group_tags=["AI伺服器", "電動車"],
+            volume=9,
+            turnover_value=300,
+            rank=2,
+        ),
+    ]
+
+    second = client.get("/api/rankings/themes/catalog")
+    assert second.status_code == 200
+    second_payload = second.json()
+    assert second_payload["total_symbols"] == 2
+    assert set(second_payload["new_symbols_today"]) == {"2330", "2317"}
+    symbols = {item["symbol"]: item for item in second_payload["rows"]}
+    assert symbols["2317"]["is_new_today"] is True
+
+    app.dependency_overrides.clear()
+    theme_mapping.get_theme_mapping_path = original_get_mapping_path
+    tag_catalog.get_tag_catalog_path = original_get_catalog_path
+    theme_mapping.load_theme_mapping.cache_clear()

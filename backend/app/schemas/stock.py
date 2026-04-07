@@ -46,3 +46,38 @@ class MomentumComparedResponse(BaseModel):
     rows: list[RankedStockWithChange]
     today_group_frequency: list[GroupFrequency]
     group_strengthening: list[GroupStrengtheningSignal]
+
+
+class ThemeTagMutationRequest(BaseModel):
+    tag: str = Field(..., min_length=1, description="Tag to add or remove")
+    industry: str | None = Field(default=None, description="Optional industry when creating new symbol mapping")
+
+
+class ThemeMappingItemResponse(BaseModel):
+    symbol: str = Field(..., description="Stock code")
+    code: str = Field(..., description="Stock code in mapping file")
+    industry: str = Field(..., description="Industry label")
+    tag: str = Field(..., description="Primary tag")
+    tags: list[str] = Field(..., description="All custom tags")
+
+
+class TagEditorStock(BaseModel):
+    symbol: str = Field(..., description="Stock code")
+    name: str = Field(..., description="Stock name")
+    industry_level_1: str = Field(..., description="Primary industry")
+    industry_level_2: str = Field(..., description="Secondary industry")
+    custom_group_tag: str = Field(..., description="Primary custom tag")
+    custom_group_tags: list[str] = Field(..., description="All custom tags")
+    first_seen_date: str = Field(..., description="First date appeared in daily top 100")
+    last_seen_date: str = Field(..., description="Last date appeared in daily top 100")
+    seen_days_count: int = Field(..., ge=1, description="How many trading days appeared")
+    last_rank: int = Field(..., ge=1, description="Latest rank in tracked top 100")
+    is_new_today: bool = Field(..., description="True if symbol is newly added today")
+
+
+class TagEditorCatalogResponse(BaseModel):
+    generated_date: str = Field(..., description="Date of this sync snapshot")
+    tracked_top_n: int = Field(..., ge=1)
+    total_symbols: int = Field(..., ge=0)
+    new_symbols_today: list[str] = Field(default_factory=list)
+    rows: list[TagEditorStock] = Field(default_factory=list)
