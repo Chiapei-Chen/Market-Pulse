@@ -16,7 +16,7 @@ const selectedIndustry = ref('')
 const industryKeyword = ref('')
 const showIndustryOptions = ref(false)
 
-const availableTags = computed(() => rankingStore.todayGroupFrequency.map((item) => item.tag))
+const availableTags = computed(() => (rankingStore.todayGroupFrequency || []).map((item) => item.tag))
 const availableIndustries = computed(() => {
   const industries = new Set<string>()
   for (const row of rankingStore.rows) {
