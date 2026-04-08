@@ -78,13 +78,19 @@ def get_momentum_snapshot(
     ranking_metric: RankingMetric = Query(default="turnover_value"),
     source: StockDataSource = Depends(get_ranking_data_source),
 ) -> MomentumComparedResponse:
+    try:
+        today_raw = source.get_today()
+        yesterday_raw = source.get_yesterday()
+    except ValueError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
     today = rerank(
-        filter_etf(source.get_today(), include_etf=include_etf),
+        filter_etf(today_raw, include_etf=include_etf),
         top_n=top_n,
         ranking_metric=ranking_metric,
     )
     yesterday = rerank(
-        filter_etf(source.get_yesterday(), include_etf=include_etf),
+        filter_etf(yesterday_raw, include_etf=include_etf),
         top_n=top_n,
         ranking_metric=ranking_metric,
     )

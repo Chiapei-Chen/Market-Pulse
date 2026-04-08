@@ -1,13 +1,17 @@
 from __future__ import annotations
 
+import logging
 import os
 import json
+import time
 from datetime import date, timedelta
 from collections.abc import Iterable
 from typing import Protocol
 
 import httpx
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
 
 from app.schemas.stock import RankedStock
 from app.services.theme_mapping import load_theme_mapping, map_stock_theme
@@ -72,7 +76,7 @@ class HttpJsonStockDataSource:
         self.verify_ssl = _verify_ssl_enabled()
 
     def _fetch(self, url: str) -> list[RankedStock]:
-        response = httpx.get(url, timeout=self.timeout, verify=self.verify_ssl)
+        response = httpx.get(url, timeout=self.timeout, verify=self.verify_ssl, follow_redirects=True)
         response.raise_for_status()
         payload = _load_json_payload(response)
 
@@ -119,19 +123,45 @@ class TwseDelayedDataSource:
 
         raise ValueError("Unable to find enough TWSE trading days in lookback window")
 
-    def _fetch_daily_rows(self, trading_day: date) -> list[dict[str, str]]:
-        response = httpx.get(
-            self.MI_INDEX_URL,
-            params={
-                "date": trading_day.strftime("%Y%m%d"),
-                "type": "ALLBUT0999",
-                "response": "json",
-            },
-            timeout=self.timeout,
-            headers={"User-Agent": "stock-ranking-dashboard/1.0"},
-            verify=self.verify_ssl,
-        )
-        response.raise_for_status()
+    def _fetch_daily_rows(self, trading_day: date, _max_retries: int = 3) -> list[dict[str, str]]:
+        for attempt in range(_max_retries):
+            try:
+                response = httpx.get(
+                    self.MI_INDEX_URL,
+                    params={
+                        "date": trading_day.strftime("%Y%m%d"),
+                        "type": "ALLBUT0999",
+                        "response": "json",
+                    },
+                    timeout=self.timeout,
+                    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"},
+                    verify=self.verify_ssl,
+                    follow_redirects=True,
+                )
+            except (httpx.ConnectError, httpx.TimeoutException) as exc:
+                logger.warning("TWSE request failed (attempt %d/%d): %s", attempt + 1, _max_retries, exc)
+                if attempt < _max_retries - 1:
+                    time.sleep(3 * (attempt + 1))
+                    continue
+                return []
+
+            if response.status_code != 200:
+                logger.warning("TWSE returned status %d (attempt %d/%d)", response.status_code, attempt + 1, _max_retries)
+                if attempt < _max_retries - 1:
+                    time.sleep(3 * (attempt + 1))
+                    continue
+                return []
+
+            content_type = response.headers.get("content-type", "")
+            if "text/html" in content_type:
+                logger.warning("TWSE returned blocked page (attempt %d/%d)", attempt + 1, _max_retries)
+                if attempt < _max_retries - 1:
+                    time.sleep(3 * (attempt + 1))
+                    continue
+                return []
+
+            break
+
         payload = _load_json_payload(response)
 
         tables = payload.get("tables")
@@ -206,8 +236,9 @@ class TwseDelayedDataSource:
         response = httpx.get(
             self.COMPANY_INFO_URL,
             timeout=self.timeout,
-            headers={"User-Agent": "stock-ranking-dashboard/1.0"},
+            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"},
             verify=self.verify_ssl,
+            follow_redirects=True,
         )
         response.raise_for_status()
         payload = _load_json_payload(response)
