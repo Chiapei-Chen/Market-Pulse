@@ -30,15 +30,16 @@ export const useRankingStore = defineStore('ranking', () => {
     error.value = null
     try {
       const snapshot = await fetchMomentumSnapshot(topN.value, includeEtf.value, rankingMetric.value)
-      rows.value = snapshot.rows
-      todayGroupFrequency.value = snapshot.today_group_frequency
-      groupStrengthening.value = snapshot.group_strengthening.filter((item) => item.is_collective_strengthening)
+      rows.value = Array.isArray(snapshot.rows) ? snapshot.rows : []
+      todayGroupFrequency.value = Array.isArray(snapshot.today_group_frequency) ? snapshot.today_group_frequency : []
+      const strengthening = Array.isArray(snapshot.group_strengthening) ? snapshot.group_strengthening : []
+      groupStrengthening.value = strengthening.filter((item) => item.is_collective_strengthening)
 
       const catalog = await fetchTagEditorCatalog(includeEtf.value, rankingMetric.value)
-      tagEditorRows.value = catalog.rows
-      tagCatalogDate.value = catalog.generated_date
-      tagCatalogTotalSymbols.value = catalog.total_symbols
-      tagCatalogNewSymbolsToday.value = catalog.new_symbols_today
+      tagEditorRows.value = Array.isArray(catalog.rows) ? catalog.rows : []
+      tagCatalogDate.value = typeof catalog.generated_date === 'string' ? catalog.generated_date : ''
+      tagCatalogTotalSymbols.value = typeof catalog.total_symbols === 'number' ? catalog.total_symbols : 0
+      tagCatalogNewSymbolsToday.value = Array.isArray(catalog.new_symbols_today) ? catalog.new_symbols_today : []
     } catch (err) {
       error.value = err instanceof Error ? err.message : '載入排行榜失敗'
     } finally {

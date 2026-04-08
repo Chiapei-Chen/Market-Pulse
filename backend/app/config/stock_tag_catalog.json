@@ -1,108 +1,7 @@
 {
-  "last_sync_date": "2026-04-07",
+  "last_sync_date": "2026-04-08",
   "tracked_top_n": 100,
-  "new_symbols_today": [
-    "0050",
-    "0056",
-    "1301",
-    "1303",
-    "1309",
-    "1326",
-    "1519",
-    "1560",
-    "1582",
-    "1711",
-    "1717",
-    "1802",
-    "2027",
-    "2059",
-    "2301",
-    "2303",
-    "2308",
-    "2313",
-    "2317",
-    "2327",
-    "2330",
-    "2337",
-    "2344",
-    "2345",
-    "2355",
-    "2357",
-    "2360",
-    "2367",
-    "2368",
-    "2379",
-    "2382",
-    "2383",
-    "2404",
-    "2408",
-    "2409",
-    "2426",
-    "2449",
-    "2454",
-    "2455",
-    "2467",
-    "2481",
-    "2485",
-    "2486",
-    "2489",
-    "2881",
-    "2882",
-    "2891",
-    "3006",
-    "3017",
-    "3026",
-    "3030",
-    "3036",
-    "3037",
-    "3167",
-    "3189",
-    "3231",
-    "3376",
-    "3443",
-    "3450",
-    "3481",
-    "3533",
-    "3563",
-    "3583",
-    "3653",
-    "3661",
-    "3665",
-    "3711",
-    "3714",
-    "3715",
-    "4906",
-    "4958",
-    "4967",
-    "4977",
-    "5269",
-    "6139",
-    "6213",
-    "6239",
-    "6257",
-    "6285",
-    "6442",
-    "6446",
-    "6451",
-    "6515",
-    "6531",
-    "6669",
-    "6770",
-    "6781",
-    "6789",
-    "6805",
-    "6830",
-    "6919",
-    "7769",
-    "7822",
-    "8021",
-    "8028",
-    "8039",
-    "8046",
-    "8210",
-    "8271",
-    "8996"
-  ],
+  "new_symbols_today": [],
   "stocks": {
     "2330": {
       "symbol": "2330",
@@ -110,8 +9,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 1
     },
     "2313": {
@@ -120,8 +19,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 2
     },
     "3037": {
@@ -130,8 +29,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 3
     },
     "2308": {
@@ -140,8 +39,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 4
     },
     "2344": {
@@ -150,8 +49,8 @@
       "industry_level_1": "電腦及週邊設備業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 5
     },
     "2408": {
@@ -160,8 +59,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 6
     },
     "8046": {
@@ -170,8 +69,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 7
     },
     "2454": {
@@ -180,8 +79,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 8
     },
     "3017": {
@@ -190,8 +89,8 @@
       "industry_level_1": "電腦及週邊設備業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 9
     },
     "2303": {
@@ -200,8 +99,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 10
     },
     "2383": {
@@ -210,8 +109,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 11
     },
     "4958": {
@@ -220,8 +119,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 12
     },
     "6285": {
@@ -230,8 +129,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 13
     },
     "2317": {
@@ -240,8 +139,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 14
     },
     "2367": {
@@ -250,8 +149,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 15
     },
     "3653": {
@@ -260,8 +159,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 16
     },
     "1303": {
@@ -270,8 +169,8 @@
       "industry_level_1": "塑膠工業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 17
     },
     "0050": {
@@ -280,8 +179,8 @@
       "industry_level_1": "ETF",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 18
     },
     "6442": {
@@ -290,8 +189,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 19
     },
     "2409": {
@@ -300,8 +199,8 @@
       "industry_level_1": "光電業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 20
     },
     "3665": {
@@ -310,8 +209,8 @@
       "industry_level_1": "其他電子業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 21
     },
     "2345": {
@@ -320,8 +219,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 22
     },
     "2368": {
@@ -330,8 +229,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 23
     },
     "2360": {
@@ -340,8 +239,8 @@
       "industry_level_1": "其他電子業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 24
     },
     "6770": {
@@ -350,8 +249,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 25
     },
     "3715": {
@@ -360,8 +259,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 26
     },
     "6213": {
@@ -370,8 +269,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 27
     },
     "3711": {
@@ -380,8 +279,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 28
     },
     "8039": {
@@ -390,8 +289,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 29
     },
     "2481": {
@@ -400,8 +299,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 30
     },
     "2455": {
@@ -410,8 +309,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 31
     },
     "3481": {
@@ -420,8 +319,8 @@
       "industry_level_1": "光電業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 32
     },
     "2485": {
@@ -430,8 +329,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 33
     },
     "7769": {
@@ -440,8 +339,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 34
     },
     "3661": {
@@ -450,8 +349,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 35
     },
     "2449": {
@@ -460,8 +359,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 36
     },
     "8021": {
@@ -470,8 +369,8 @@
       "industry_level_1": "其他電子業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 37
     },
     "3189": {
@@ -480,8 +379,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 38
     },
     "3533": {
@@ -490,8 +389,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 39
     },
     "3167": {
@@ -500,8 +399,8 @@
       "industry_level_1": "電機機械",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 40
     },
     "3714": {
@@ -510,8 +409,8 @@
       "industry_level_1": "光電業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 41
     },
     "6669": {
@@ -520,8 +419,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 42
     },
     "8996": {
@@ -530,8 +429,8 @@
       "industry_level_1": "電機機械",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 43
     },
     "2327": {
@@ -540,8 +439,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 44
     },
     "6257": {
@@ -550,8 +449,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 45
     },
     "3006": {
@@ -560,8 +459,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 46
     },
     "2891": {
@@ -570,8 +469,8 @@
       "industry_level_1": "金融保險",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 47
     },
     "4906": {
@@ -580,8 +479,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 48
     },
     "0056": {
@@ -590,8 +489,8 @@
       "industry_level_1": "ETF",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 49
     },
     "6451": {
@@ -600,8 +499,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 50
     },
     "8210": {
@@ -610,8 +509,8 @@
       "industry_level_1": "電腦及週邊設備業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 51
     },
     "2382": {
@@ -620,8 +519,8 @@
       "industry_level_1": "電腦及週邊設備業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 52
     },
     "6830": {
@@ -630,8 +529,8 @@
       "industry_level_1": "其他電子業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 53
     },
     "6239": {
@@ -640,8 +539,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 54
     },
     "3450": {
@@ -650,8 +549,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 55
     },
     "3231": {
@@ -660,8 +559,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 56
     },
     "3443": {
@@ -670,8 +569,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 57
     },
     "1309": {
@@ -680,8 +579,8 @@
       "industry_level_1": "塑膠工業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 58
     },
     "2301": {
@@ -690,8 +589,8 @@
       "industry_level_1": "電腦及週邊設備業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 59
     },
     "2489": {
@@ -700,8 +599,8 @@
       "industry_level_1": "光電業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 60
     },
     "2337": {
@@ -710,8 +609,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 61
     },
     "6805": {
@@ -720,8 +619,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 62
     },
     "2426": {
@@ -730,8 +629,8 @@
       "industry_level_1": "光電業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 63
     },
     "1802": {
@@ -740,8 +639,8 @@
       "industry_level_1": "玻璃陶瓷",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 64
     },
     "3563": {
@@ -750,8 +649,8 @@
       "industry_level_1": "光電業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 65
     },
     "7822": {
@@ -760,8 +659,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 66
     },
     "2355": {
@@ -770,8 +669,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 67
     },
     "2486": {
@@ -780,8 +679,8 @@
       "industry_level_1": "光電業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 68
     },
     "8271": {
@@ -790,8 +689,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 69
     },
     "6919": {
@@ -800,8 +699,8 @@
       "industry_level_1": "生技醫療業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 70
     },
     "2467": {
@@ -810,8 +709,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 71
     },
     "4967": {
@@ -820,8 +719,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 72
     },
     "2404": {
@@ -830,8 +729,8 @@
       "industry_level_1": "其他電子業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 73
     },
     "1560": {
@@ -840,8 +739,8 @@
       "industry_level_1": "電機機械",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 74
     },
     "2059": {
@@ -850,8 +749,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 75
     },
     "1717": {
@@ -860,8 +759,8 @@
       "industry_level_1": "化學工業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 76
     },
     "6515": {
@@ -870,8 +769,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 77
     },
     "6531": {
@@ -880,8 +779,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 78
     },
     "6139": {
@@ -890,8 +789,8 @@
       "industry_level_1": "其他電子業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 79
     },
     "6781": {
@@ -900,8 +799,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 80
     },
     "1326": {
@@ -910,8 +809,8 @@
       "industry_level_1": "塑膠工業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 81
     },
     "6446": {
@@ -920,8 +819,8 @@
       "industry_level_1": "生技醫療業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 82
     },
     "2027": {
@@ -930,8 +829,8 @@
       "industry_level_1": "鋼鐵工業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 83
     },
     "2357": {
@@ -940,8 +839,8 @@
       "industry_level_1": "電腦及週邊設備業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 84
     },
     "1301": {
@@ -950,8 +849,8 @@
       "industry_level_1": "塑膠工業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 85
     },
     "3376": {
@@ -960,8 +859,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 86
     },
     "8028": {
@@ -970,8 +869,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 87
     },
     "1519": {
@@ -980,8 +879,8 @@
       "industry_level_1": "電機機械",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 88
     },
     "3030": {
@@ -990,8 +889,8 @@
       "industry_level_1": "其他電子業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 89
     },
     "5269": {
@@ -1000,8 +899,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 90
     },
     "1582": {
@@ -1010,8 +909,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 91
     },
     "6789": {
@@ -1020,8 +919,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 92
     },
     "3036": {
@@ -1030,8 +929,8 @@
       "industry_level_1": "電子通路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 93
     },
     "1711": {
@@ -1040,8 +939,8 @@
       "industry_level_1": "化學工業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 94
     },
     "3583": {
@@ -1050,8 +949,8 @@
       "industry_level_1": "半導體業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 95
     },
     "4977": {
@@ -1060,8 +959,8 @@
       "industry_level_1": "通信網路業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 96
     },
     "2379": {
@@ -1070,8 +969,8 @@
       "industry_level_1": "電腦及週邊設備業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 97
     },
     "2881": {
@@ -1080,8 +979,8 @@
       "industry_level_1": "金融保險",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 98
     },
     "2882": {
@@ -1090,8 +989,8 @@
       "industry_level_1": "金融保險",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 99
     },
     "3026": {
@@ -1100,8 +999,8 @@
       "industry_level_1": "電子零組件業",
       "industry_level_2": "Unknown",
       "first_seen_date": "2026-04-07",
-      "last_seen_date": "2026-04-07",
-      "seen_days_count": 1,
+      "last_seen_date": "2026-04-08",
+      "seen_days_count": 2,
       "last_rank": 100
     }
   }

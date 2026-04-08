@@ -1,16 +1,11 @@
 import axios from 'axios'
 import type { MomentumSnapshot, RankingMetric, TagEditorCatalogResponse } from '../types/ranking'
 
-// 1. 取得環境變數
-const envBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+const envBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim()
+const apiBaseUrl = envBaseUrl || (import.meta.env.DEV ? 'http://127.0.0.1:8000/api/rankings' : '/api/rankings')
 
-// 2. 決定 Base URL
-// 優先使用環境變數 -> 其次開發環境用 127.0.0.1 -> 最後生產環境用相對路徑
-const apiBaseUrl = envBaseUrl || (import.meta.env.DEV ? 'http://127.0.0.1:8000' : '');
-
-// 3. 檢查警告（選用）
 if (!envBaseUrl && !import.meta.env.DEV) {
-  console.warn('VITE_API_BASE_URL is not set. Requests will be relative to current domain.');
+  console.warn('VITE_API_BASE_URL is not set. Falling back to /api/rankings')
 }
 
 const client = axios.create({
