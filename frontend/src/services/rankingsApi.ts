@@ -10,7 +10,7 @@ if (!envBaseUrl && !import.meta.env.DEV) {
 
 const client = axios.create({
   baseURL: apiBaseUrl,
-  timeout: 10000,
+  timeout: 60000,
 })
 
 export async function fetchMomentumSnapshot(
