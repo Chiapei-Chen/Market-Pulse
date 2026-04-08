@@ -89,9 +89,11 @@ def get_momentum_snapshot(
         ranking_metric=ranking_metric,
     )
 
+    compared_rows = compare_rankings(yesterday=yesterday, today=today, top_n=top_n) or []
+
     return MomentumComparedResponse(
         ranking_metric=ranking_metric,
-        rows=compare_rankings(yesterday=yesterday, today=today, top_n=top_n),
+        rows=compared_rows,
         today_group_frequency=aggregate_group_frequency(today, top_n=top_n),
         group_strengthening=detect_group_collective_strengthening(
             yesterday=yesterday,

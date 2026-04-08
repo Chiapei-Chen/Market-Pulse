@@ -67,6 +67,17 @@ def _override_source() -> StockDataSource:
     return FakeDataSource()
 
 
+def _override_empty_source() -> StockDataSource:
+    class EmptyDataSource(StockDataSource):
+        def get_today(self) -> list[RankedStock]:
+            return []
+
+        def get_yesterday(self) -> list[RankedStock]:
+            return []
+
+    return EmptyDataSource()
+
+
 def test_today_endpoint_filters_etf() -> None:
     app.dependency_overrides[get_ranking_data_source] = _override_source
     client = TestClient(app)
@@ -113,6 +124,19 @@ def test_momentum_endpoint_returns_group_frequency() -> None:
     assert "ETF" in tags
     assert payload["ranking_metric"] == "turnover_value"
     assert "group_strengthening" in payload
+
+    app.dependency_overrides.clear()
+
+
+def test_momentum_endpoint_returns_empty_rows_array_when_no_data() -> None:
+    app.dependency_overrides[get_ranking_data_source] = _override_empty_source
+    client = TestClient(app)
+
+    response = client.get("/api/rankings/momentum", params={"top_n": 100, "include_etf": "true"})
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["rows"] == []
 
     app.dependency_overrides.clear()
 
