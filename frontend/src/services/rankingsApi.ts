@@ -1,8 +1,14 @@
 import axios from 'axios'
 import type { MomentumSnapshot, RankingMetric, TagEditorCatalogResponse } from '../types/ranking'
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
+
+if (!apiBaseUrl) {
+  throw new Error('Missing VITE_API_BASE_URL. Please set it in your environment configuration.')
+}
+
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000/api/rankings',
+  baseURL: apiBaseUrl,
   timeout: 10000,
 })
 

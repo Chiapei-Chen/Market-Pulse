@@ -6,7 +6,11 @@ Vue 3 (Composition API) + TypeScript + Tailwind CSS + Pinia
 
 npm install
 
-Copy .env.example to .env if you need to change API URL.
+Copy .env.example to .env and set VITE_API_BASE_URL for your environment.
+
+Example:
+
+VITE_API_BASE_URL=http://127.0.0.1:8000/api/rankings
 
 ## Run
 
