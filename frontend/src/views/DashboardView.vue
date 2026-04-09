@@ -157,11 +157,11 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
 
 <template>
   <main
-    class="min-h-screen bg-[radial-gradient(circle_at_15%_20%,#fee2e2_0%,transparent_25%),radial-gradient(circle_at_80%_10%,#dbeafe_0%,transparent_30%),linear-gradient(145deg,#f8fafc,#eef2ff)] px-4 py-8 text-slate-800 sm:px-8"
+    class="min-h-screen bg-[radial-gradient(circle_at_15%_20%,#fee2e2_0%,transparent_25%),radial-gradient(circle_at_80%_10%,#dbeafe_0%,transparent_30%),linear-gradient(145deg,#f8fafc,#eef2ff)] px-3 py-5 text-slate-800 sm:px-6 sm:py-8 lg:px-8"
   >
     <section class="mx-auto max-w-6xl">
       <header
-        class="mb-6 rounded-2xl border border-white/50 bg-white/70 p-6 shadow-lg backdrop-blur"
+        class="mb-6 rounded-2xl border border-white/50 bg-white/70 p-4 shadow-lg backdrop-blur sm:p-6"
       >
         <p
           class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500"
@@ -171,7 +171,7 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
         <h1 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-4xl">
           股票交易量 / 值 排行榜
         </h1>
-        <p class="mt-2 text-sm text-slate-600">
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
           即時比較昨日前 N 名與今日即時前 N 名，快速追蹤名次變化。
         </p>
       </header>
@@ -181,7 +181,7 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
       >
         <button
           type="button"
-          class="rounded-xl px-4 py-2 text-sm font-semibold transition"
+          class="min-w-0 flex-1 rounded-xl px-4 py-2 text-sm font-semibold transition sm:flex-none"
           :class="
             activeSection === 'ranking'
               ? 'bg-slate-900 text-white'
@@ -193,7 +193,7 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
         </button>
         <button
           type="button"
-          class="rounded-xl px-4 py-2 text-sm font-semibold transition"
+          class="min-w-0 flex-1 rounded-xl px-4 py-2 text-sm font-semibold transition sm:flex-none"
           :class="
             activeSection === 'tag-manager'
               ? 'bg-slate-900 text-white'
@@ -207,9 +207,9 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
 
       <section
         v-if="activeSection === 'ranking'"
-        class="mb-6 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-start sm:justify-between"
+        class="mb-6 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm xl:flex-row xl:items-start xl:justify-between"
       >
-        <div class="grid gap-3 sm:grid-cols-2 sm:gap-6">
+        <div class="grid flex-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:gap-6">
           <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
             <p
               class="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500"
@@ -226,11 +226,11 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
               排行模式
             </p>
             <label
-              class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700"
+              class="flex flex-col gap-2 text-sm font-semibold text-slate-700 sm:inline-flex sm:flex-row sm:items-center"
             >
               排行依據
               <select
-                class="rounded-lg border border-slate-300 bg-white px-3 py-2"
+                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 sm:w-auto"
                 :value="rankingStore.rankingMetric"
                 @change="
                   rankingStore.setRankingMetric(
@@ -252,8 +252,8 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
             >
               標籤查詢
             </p>
-            <div class="relative w-64">
-              <div class="flex items-center gap-2">
+            <div class="relative w-full max-w-full sm:max-w-xs lg:max-w-sm">
+              <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
                 <input
                   v-model="tagKeyword"
                   type="text"
@@ -270,7 +270,7 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
                 />
                 <button
                   type="button"
-                  class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100"
+                  class="shrink-0 rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100"
                   @click="clearTagFilter"
                 >
                   全部
@@ -310,8 +310,8 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
             >
               產業查詢
             </p>
-            <div class="relative w-64">
-              <div class="flex items-center gap-2">
+            <div class="relative w-full max-w-full sm:max-w-xs lg:max-w-sm">
+              <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
                 <input
                   v-model="industryKeyword"
                   type="text"
@@ -328,7 +328,7 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
                 />
                 <button
                   type="button"
-                  class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100"
+                  class="shrink-0 rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100"
                   @click="clearIndustryFilter"
                 >
                   全部
@@ -364,14 +364,14 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
         </div>
 
         <label
-          class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700"
+          class="flex w-full items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 sm:w-auto sm:justify-start xl:min-w-40 xl:flex-col xl:items-stretch"
         >
-          Top N
+          <span>Top N</span>
           <input
             type="number"
             min="1"
             max="500"
-            class="w-24 rounded-lg border border-slate-300 px-3 py-2 text-right"
+            class="w-24 rounded-lg border border-slate-300 px-3 py-2 text-right sm:w-28 xl:w-full"
             :value="rankingStore.topN"
             @change="
               rankingStore.setTopN(
@@ -384,7 +384,7 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
 
       <section
         v-if="activeSection === 'ranking'"
-        class="mb-6 grid gap-4 lg:grid-cols-2"
+        class="mb-6 grid gap-4 md:grid-cols-2"
       >
         <article
           class="rounded-2xl border border-emerald-200 bg-white p-4 shadow-sm"
@@ -478,7 +478,7 @@ async function handleRemoveTag(payload: { symbol: string; tag: string }) {
     <button
       v-show="showScrollTop"
       type="button"
-      class="fixed bottom-6 right-6 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-700"
+      class="fixed bottom-4 right-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-xs font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-700 sm:bottom-6 sm:right-6 sm:h-11 sm:w-11 sm:text-sm"
       aria-label="回到頂部"
       @click="scrollToTop"
     >
